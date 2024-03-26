@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing:border-box;
+        }
+        #searchBar{
+            height: 20px;
+            width: 500px;
+            font-size: 1em;
+            padding: 1em;
+        }
+        button{
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+        <input type="text" name="searchInput" id="searchBar" onkeydown="isEnterPressed(event)">
+        <button type="button">
+            <img src="./search-sort-svgrepo-com.svg" alt="" onclick="searchWeb()">
+        </button>
+        <script>
+            const searchWeb = () =>{
+                const userSearch = document.querySelector('#searchBar').value;
+                let url = userSearch;
+                if(!userSearch.startsWith('https'))
+                    url = `https://${url}`;
+                window.open(url, "_blank") 
+            } 
+
+            const isEnterPressed = (event) => {
+                if(event.keyCode == 13)
+                    searchWeb();
+            } 
+        </script>
+</body>
+</html>
